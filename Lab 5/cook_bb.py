@@ -14,19 +14,22 @@ conn.mode = 0
 cmd = 192 #start bit + single ended
 
 n=0
-
-
+y=[]
+x=[]
 try:
-    while n<1000:
+    while n<100:
         reply_bytes = conn.xfer2([cmd, 0]) # sends command to start conversion and reply
         reply_bitstring = ''.join(bitstring(n) for n in reply_bytes)
         reply = reply_bitstring[5:15] # take only 10 bits
         print int(reply, 2)*3.3/2**10 #generate voltage
-        time.sleep(.1)
+        y.append(int(reply, 2)*3.3/2**10)
+        x.append(n)
         n += 1
+        time.sleep(.1)
         
     plt.plot(x, y)
     plt.show()
+    
         
 
 except KeyboardInterrupt:

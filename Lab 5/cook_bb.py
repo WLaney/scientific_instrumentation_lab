@@ -21,8 +21,8 @@ conn.mode = 0
 cmd = 192 #start bit + single ended
 
 n=0
-y=[]
-x=[]
+y=[0]*1000
+x=[0]*1000
 global st
 st=0
 GPIO.add_event_detect(17, GPIO.RISING, callback=start, bouncetime=100)
@@ -35,13 +35,12 @@ try:
                 reply_bitstring = ''.join(bitstring(n) for n in reply_bytes)
                 reply = reply_bitstring[5:15] # take only 10 bits
                 #print int(reply, 2)*3.3/2**10 #generate voltage
-                y.append(int(reply, 2)*3.3/2**10)
-                x.append(n)
+                y[n]=int(reply, 2)*3.3/2**10
                 n += 1
             break
         else:
-            X=0
-        
+            h=0
+    x=range(0,1000,1) 
     plt.plot(x, y)
     plt.show()
     

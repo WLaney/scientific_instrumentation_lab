@@ -56,7 +56,7 @@ With the PWM ablity of the Pi's profiled we stared to power a DC motor with the 
 
 Two buttons were used to control the duty cycle outputed by the pi. The code for this can be seen in listing 1.
 
-A photodiode and LED were used to messure the rotational frequncy of the mototr. This was done by putting a proper on the moter, an LED below the motoer and a photodiode above it, conected to the scope. When the propler corssed over the photodiode we would see a pip from the light of the LED on the scope. Using the time between these pips we can calculate the rotational velocity of the motor. An image of this pips can be seen in figure 3. We steped the duty cycle from 5-95\%. The results of this can be seen in table 1.  A picutre of the circuit can be seen in figure 4.
+A photodiode and LED were used to messure the rotational frequncy of the mototr. This was done by putting a proper on the moter, an LED below the motoer and a photodiode above it, conected to the scope. When the propler corssed over the photodiode we would see a pip from the light of the LED on the scope. Using the time between these pips we can calculate the rotational velocity of the motor. An image of this pips can be seen in figure 3. We steped the duty cycle from 5-95\%. The results of this can be seen in table 1, and a graph in figure 5.  A picutre of the circuit can be seen in figure 4.
 
 \begin{figure}[h]
 \begin{center}
@@ -97,6 +97,12 @@ We expected the data to show that as duty cycle increaed so would angluar veloci
   \label{tab:addlabel}%
 \end{table}%
 
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=.6\columnwidth]{graph.png}
+\end{center}
+\caption{\label{fig:pic} Angular velocity (rad/sec) vs. duty cycle }
+\end{figure}
 
 \section{Conclusion}
 In this lab we learned about pulse width modfication, and speficaly the pulse width modfication capablities of the raspberry Pis. We learned how to find the limitations of the Pi's PWM, and what they are. We also learend how to use physical hardware buttons to interact with the Pis. Additonaly we learned how to use high voltage devices with a low volatge control through a MOSFET. Finally we learned how to desgine a test sysem for a DC motor.

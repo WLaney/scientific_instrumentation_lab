@@ -38,7 +38,7 @@
 *.synctex.gz(busy)
 *.pdfsync
 
-
 ##images
 *.jpg
 *.jpeg
+*.png

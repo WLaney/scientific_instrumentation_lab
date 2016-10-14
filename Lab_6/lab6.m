@@ -18,6 +18,7 @@ perror=abs(dc_output-dcout_expected)./dcout_expected;
 plot(dcout_expected, perror, '*')
 xlabel('expected voltage output')
 ylabel('perecent error')
+title('percent error vs. expected output')
 
 %function generator gain and lose near 30hz with input sw at 4
 %max frequency is 16, 95hz (pluse or minus 2hz)

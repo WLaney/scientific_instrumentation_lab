@@ -16,7 +16,7 @@
 %---------------------------------------------------------------
 \title{Lab 07 Report}
 \author{William Laney \& Ian Huber}
-\date{October 29, 2016}
+\date{Novemeber 2, 2016}
 \maketitle
 
 \section{Group Member Roles}
@@ -29,27 +29,79 @@ Programer: William
 QA Specialist William
 
 \section{Intial setup and testing}
-We began this lab by simply trying to get the mbed to communicate via serial with a computer. We did this using the terminal utilyt screen. We first wrote code that simply printed data to the serial monitor. We then made code that would echo a serial sting input from the compture. Final we wrote code that would take an integer and a flating point number, add a fixed value to them, and output the numbers back to serial. The code for this can be seen in listing ADD NUMBER. 
+We began this lab by simply trying to get the mbed to communicate via serial with a computer. We did this using the terminal utilyt screen. We first wrote code that simply printed data to the serial monitor. We then made code that would echo a serial sting input from the compture. Final we wrote code that would take an integer and a flating point number, add a fixed value to them, and output the numbers back to serial. The code for this can be seen in listing 1. 
 
 \section{analouge voltage}
-Next we wrote code for the mbed that would look at an anlgoue voltage input and write the voltage to the serial mointor. This code can be seen in listing ADD NUMBER. We tested this functuoanlity from 0 to 3.3V and copared the mbed readings to a digital multimeter. A plot showing the percent error for each of these messurments can be seen in figure ADD NUMBER. From this we concluded that the error in the mbed is small and random. We were not able to find systamatic error.
+Next we wrote code for the mbed that would look at an anlgoue voltage input and write the voltage to the serial mointor. This code can be seen in listing 2. We tested this functuoanlity from 0 to 3.3V and copared the mbed readings to a digital multimeter. A plot showing the percent error for each of these messurments can be seen in figure 1. From this we concluded that the error in the mbed is small and random. We were not able to find systamatic error.
 
-We then did the same experment in reversr. That is to say we wrote a code that would take a user input through serial and output that voltage. This code can be seen in listing ADD NUMBER. We compared the requested output voltage to the output voltage read by the mbed. A plot showing the percent error for each of these messurments can be seen in figure ADD NUMBER. From this we concluded that the mbed gains accuracy expontialy between 0 and 1 volt and any error over 1 volt is random. 
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=1\columnwidth]{vin.png}
+\end{center}
+\caption{\label{fig:pic} Input voltage vs. Percent error}
+\end{figure}
+
+We then did the same experment in reversr. That is to say we wrote a code that would take a user input through serial and output that voltage. This code can be seen in listing 3. We compared the requested output voltage to the output voltage read by the mbed. A plot showing the percent error for each of these messurments can be seen in figure 2. From this we concluded that the mbed gains accuracy expontialy between 0 and 1 volt and any error over 1 volt is random. 
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=1\columnwidth]{vout.png}
+\end{center}
+\caption{\label{fig:pic} Requested output voltage vs. Percent error}
+\end{figure}
 
 \section{PWM and interupts}
-We began this section by testing to see what was the fastest square wave we could generate. This code can be seen in listing ADD NUMBER. We found that we could generate a square wave up to 960 Ghz.
+We began this section by testing to see what was the fastest square wave we could generate. This code can be seen in listing 4. We found that we could generate a square wave up to 960 Ghz.
 
-Next we used code written by Dr. Cooke that generates an output pulse that trigers an interupt and flips a digital ouput pin. This code can be found in lising ADD NUMBER. A picture of the out put of this code can be seen in figure ADD NUMBER. From this we found that the delay between the triggering edge and the resulting action taken by the interupt service routine (ISR) is ADD VALUE. This value is inherent to the system and can not be over come using the technigues in this lab. There are ways to shorten this time layed out in the mbed uset manual, but they are outside the scope of this class. 
+Next we used code written by Dr. Cooke that generates an output pulse that trigers an interupt and flips a digital ouput pin. This code can be found in lising 5. A picture of the out put of this code can be seen in figure 3. From this we found that the delay between the triggering edge and the resulting action taken by the interupt service routine (ISR) is 6.7$\pm0.2\mu$s. This value is inherent to the system and can not be over come using the technigues in this lab. There are ways to shorten this time layed out in the mbed uset manual, but they are outside the scope of this class. 
 
-Finaly we wrote code that triggers on the edge of a PWM output and generates two pulses. We found that the shortest time between pulse we could achive was 160ns. This time stayed constatn throughout repeated trials howver the oupt pulses are not square. This can be seen in figure ADD NUMMBER. At higher time seperations between the pulses they form better square waves. The code we used to generate these pulses can be seen in figure ADD NUMBER. In this lab we generated the two pulses on the same line, however it is simple to creat the start and stop pulses on differnt lines and this may be more useful in a labratory setting for controling equipment.
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=.5\columnwidth]{flip.jpg}
+\end{center}
+\caption{\label{fig:pic} ISR causing a digtila output to flip}
+\end{figure}
+
+Finaly we wrote code that triggers on the edge of a PWM output and generates two pulses. We found that the shortest time between pulse we could achive was 160ns. This time stayed constatn throughout repeated trials howver the oupt pulses are not square. This can be seen in figure 4. At higher time seperations between the pulses they form better square waves. The code we used to generate these pulses can be seen in listing 5. In this lab we generated the two pulses on the same line, however it is simple to creat the start and stop pulses on differnt lines and this may be more useful in a labratory setting for controling equipment.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=.5\columnwidth]{pulse.jpg}
+\end{center}
+\caption{\label{fig:pic} On, off pulses}
+\end{figure}
 
 \section{Rotary encoder}
-The final section of this lab was to create code that would incramnet a count based on a roatry encoder. I had already done this for the Pi as a prelab for Lab 5, however we found that the pi was not fast enough to accuretly read the rotary encoder. In discovering this I did create funcitonal code for reading the roatry encoder in phython, which can be seen in listing ADD NUMBER. A circuit digrame for the encoder can be seen in figure ADD NUMBER.
+The final section of this lab was to create code that would incramnet a count based on a roatry encoder. I had already done this for the Pi as a prelab for Lab 5, however we found that the pi was not fast enough to accuretly read the rotary encoder. In discovering this I did create funcitonal code for reading the roatry encoder in phython, which can be seen in listing 6. A circuit digrame for the encoder can be seen in figure 5.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=.6\columnwidth]{rotary.png}
+\end{center}
+\caption{\label{fig:pic} rotary encoder schematic}
+\end{figure}
 
 For this lab I began by translating my python code into C++ for the mbed. However when we tried to run this code connected to the mbed we found that it did not function propoerly. Looking at the wave forms from the rotary encoder on the scope we found that the rotary encoder was becoming stuck on the on state and giving very messy outpu in general. We trited to clean up this output at first by putting 0.1uF capcitors to ground. This helped a little but not enought to get reliable reading from the rotary encoder. We then bult an RC filter using 4.7k\ohm along with the 0.1uF capcitor. This did improve the signal but it still was not good enough. Finaly we swtiched out our rotarty encoder for a new one, leaing the filters, and this ened up solving our problem.
 
-After this we reales our code was also not funtinling properly. The interupts were happening to fast and were causing both the first and second falling adges from the two sides of the encoder to be counted, this caused ever turn of the encoder to rais and then lower the value by one. To solve this we moved where our wait staments were in the code. Our final working code can be seen in figure ADD NUMBER.
+After this we reales our code was also not funtinling properly. The interupts were happening to fast and were causing both the first and second falling adges from the two sides of the encoder to be counted, this caused ever turn of the encoder to rais and then lower the value by one. To solve this we moved where our wait staments were in the code. Our final working code can be seen in listing 7.
 
 \section{Appendix}
+
+\lstinputlisting[language=c++, caption=Serial testing, label=amb]{string_reverse.cpp}
+
+\lstinputlisting[language=c++, caption=Read anlogue voltage, label=amb]{read_vin.cpp}
+
+\lstinputlisting[language=c++, caption=Write anlogue voltage, label=amb]{AnalogOut_DAC_Test.cpp}
+
+\lstinputlisting[language=c++, caption=PWM out, label=amb]
+{PMW_out.cpp}
+
+\lstinputlisting[language=c++, caption=ISR, label=amb]
+{ISR_Example.cpp}
+
+\lstinputlisting[language=Python, caption=python rotarty encoder, label=amb]{laney5_rotary.py}
+
+\lstinputlisting[language=c++, caption=C++ rotary encoder, label=amb]
+{rotary.cpp}
 
 \end{document}

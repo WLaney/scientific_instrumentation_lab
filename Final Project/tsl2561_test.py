@@ -18,16 +18,16 @@ while True:
     
     #read chanel 0
     ch0=bus.read_i2c_block_data(DEVICE_ADDRESS, read_ch0)
-    print("ch0 value:" ch0)
+    print("ch0 value:", ch0)
 
     #read chanel 1
     ch1=bus.read_i2c_block_data(DEVICE_ADDRESS, read_ch1)
-    print("ch1 value:" ch1)
+    print("ch1 value:", ch1)
 
     #convert reading to lux
     ratio=ch1/ch2
 
-    if ( 0 <= ratio <=. 50):
+    if ( 0 <= ratio <= 0.50):
         lux=0.0304*ch0-0.0593*ch0*(ratio^(1.4))
     elif ( 0.5 < ratio <= 0.61):
         lux=0.0224*ch0-0.031*ch1
